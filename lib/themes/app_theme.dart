@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  // Mis colores base en hexadecimal puro (evitando el .withOpacity para no ensuciar)
+  // Colores base del portafolio. Mantengo los hexadecimales puros
+  // para asegurar que el contraste no varíe accidentalmente en otras pantallas.
   static const Color backgroundBeige = Color(0xFFF5F5DC);
   static const Color primaryGreen = Color(0xFF006A4E);
   static const Color textNavy = Color(0xFF000080);
@@ -12,7 +13,8 @@ class AppTheme {
     primaryColor: primaryGreen,
     scaffoldBackgroundColor: backgroundBeige,
 
-    // Centralizo la configuración de la AppBar aquí para mantener el principio KISS en el main
+    // Configuración global del AppBar para evitar repetir este mismo
+    // bloque de diseño en cada vista nueva que agreguemos.
     appBarTheme: const AppBarTheme(
       backgroundColor: primaryGreen,
       elevation: 0,
@@ -25,7 +27,8 @@ class AppTheme {
       ),
     ),
 
-    // Aplico la fuente Outfit a todos los textos con mi color azul marino
+    // Asigno Outfit como tipografía principal y fuerzo el color textNavy
+    // en los textos para mantener la consistencia en toda la app.
     textTheme: GoogleFonts.outfitTextTheme().apply(
       bodyColor: textNavy,
       displayColor: textNavy,
