@@ -3,21 +3,23 @@ import 'package:flutter/material.dart';
 import 'routes/app_routes.dart';
 import 'themes/app_theme.dart';
 
-void main() => runApp(const MiPortafolio());
+void main() => runApp(const MyApp());
 
-class MiPortafolio extends StatelessWidget {
-  const MiPortafolio({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Portafolio Jesús',
-      // Aplico los colores y tipografías de app_theme
-      theme: AppTheme.lightTheme,
-      // Llamo a las rutas de las pantallas
+
+      // Rutas delegadas al archivo de barril para no saturar el main
       initialRoute: AppRoutes.initialRoute,
       routes: AppRoutes.routes,
+
+      // Aplicamos el tema global centralizado
+      theme: AppTheme.lightTheme,
     );
   }
 }

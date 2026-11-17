@@ -1,37 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  // Colores base del portafolio. Mantengo los hexadecimales puros
-  // para asegurar que el contraste no varíe accidentalmente en otras pantallas.
-  static const Color backgroundBeige = Color(0xFFF5F5DC);
-  static const Color primaryGreen = Color(0xFF006A4E);
-  static const Color textNavy = Color(0xFF000080);
+  // Centralizamos la paleta aquí para tener un Single Source of Truth.
+  // Así evitamos el hardcodeo de colores en cada pantalla (DRY).
+  static const Color primaryGreen = Color(0xFF004B23);
+  static const Color navyBlue = Color(0xFF001F54);
+  static const Color beigeBg = Color(0xFFF5F5F0);
 
-  // Tema claro global
+  // Usamos static final para que el tema se instancie una sola vez en memoria
   static final ThemeData lightTheme = ThemeData.light().copyWith(
-    primaryColor: primaryGreen,
-    scaffoldBackgroundColor: backgroundBeige,
+    scaffoldBackgroundColor: beigeBg,
 
-    // Configuración global del AppBar para evitar repetir este mismo
-    // bloque de diseño en cada vista nueva que agreguemos.
+    // Estilo unificado para los AppBars de todo el portafolio
     appBarTheme: const AppBarTheme(
-      backgroundColor: primaryGreen,
+      backgroundColor: navyBlue, //
       elevation: 0,
       centerTitle: true,
-      iconTheme: IconThemeData(color: backgroundBeige),
       titleTextStyle: TextStyle(
-        color: backgroundBeige,
+        color: Colors.white,
         fontSize: 22,
         fontWeight: FontWeight.bold,
       ),
+      iconTheme: IconThemeData(color: Colors.white),
     ),
 
-    // Asigno Outfit como tipografía principal y fuerzo el color textNavy
-    // en los textos para mantener la consistencia en toda la app.
-    textTheme: GoogleFonts.outfitTextTheme().apply(
-      bodyColor: textNavy,
-      displayColor: textNavy,
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: primaryGreen,
+      foregroundColor: Colors.white,
+      elevation: 4,
     ),
+
+    iconTheme: const IconThemeData(color: primaryGreen),
   );
 }
