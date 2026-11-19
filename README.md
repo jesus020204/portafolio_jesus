@@ -19,3 +19,9 @@ Proyecto de portafolio personal desarrollado en Flutter para la materia de progr
 1. Descargar los paquetes necesarios:
    ```bash
    flutter pub get
+   ```
+
+2. Ejecutar la aplicación:
+   ```bash
+   flutter run
+   ```
