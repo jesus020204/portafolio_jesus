@@ -1,35 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  // Centralizamos la paleta aquí para tener un Single Source of Truth.
-  // Así evitamos el hardcodeo de colores en cada pantalla (DRY).
-  static const Color primaryGreen = Color(0xFF004B23);
-  static const Color navyBlue = Color(0xFF001F54);
-  static const Color beigeBg = Color(0xFFF5F5F0);
+  // Paleta de colores principal
+  static const Color backgroundBeige = Color(0xFFF5F5DC);
+  static const Color primaryGreen = Color(0xFF006A4E);
+  static const Color textNavy = Color(0xFF000080);
 
-  // Usamos static final para que el tema se instancie una sola vez en memoria
+  // Tema claro global
   static final ThemeData lightTheme = ThemeData.light().copyWith(
-    scaffoldBackgroundColor: beigeBg,
+    primaryColor: primaryGreen,
+    scaffoldBackgroundColor: backgroundBeige,
 
-    // Estilo unificado para los AppBars de todo el portafolio
+    // Estilos por defecto para el AppBar
     appBarTheme: const AppBarTheme(
-      backgroundColor: navyBlue, //
+      backgroundColor: primaryGreen,
       elevation: 0,
       centerTitle: true,
+      iconTheme: IconThemeData(color: backgroundBeige),
       titleTextStyle: TextStyle(
-        color: Colors.white,
+        color: backgroundBeige,
         fontSize: 22,
         fontWeight: FontWeight.bold,
       ),
-      iconTheme: IconThemeData(color: Colors.white),
     ),
 
-    floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      backgroundColor: primaryGreen,
-      foregroundColor: Colors.white,
-      elevation: 4,
+    // Tipografía general de la app
+    textTheme: GoogleFonts.outfitTextTheme().apply(
+      bodyColor: textNavy,
+      displayColor: textNavy,
     ),
-
-    iconTheme: const IconThemeData(color: primaryGreen),
   );
 }

@@ -13,12 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Portafolio Jesús',
-
-      // Rutas delegadas al archivo de barril para no saturar el main
       initialRoute: AppRoutes.initialRoute,
       routes: AppRoutes.routes,
-
-      // Aplicamos el tema global centralizado
       theme: AppTheme.lightTheme,
     );
   }

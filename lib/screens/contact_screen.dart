@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../themes/app_theme.dart';
 
-// Cambiamos a StatefulWidget porque el formulario sí muta su estado al escribir o validar.
+// Implementación de StatefulWidget para gestionar el estado de las validaciones del formulario.
 class ContactScreen extends StatefulWidget {
   const ContactScreen({super.key});
 
@@ -11,14 +11,14 @@ class ContactScreen extends StatefulWidget {
 }
 
 class _ContactScreenState extends State<ContactScreen> {
-  // Key para controlar y validar todo el formulario de golpe.
+  // Llave global para identificar y validar el estado del formulario en el árbol de widgets.
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Contacto')),
-      // SingleChildScrollView previene el Bottom Overflow cuando el teclado sube.
+      // SingleChildScrollView evita el desbordamiento visual al abrir el teclado del dispositivo.
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
         child: Form(
@@ -87,12 +87,12 @@ class _ContactScreenState extends State<ContactScreen> {
                 height: 50,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    // Consumo el color desde mi Single Source of Truth
+                    // Aplicación del color centralizado desde el tema global.
                     backgroundColor: AppTheme.primaryGreen,
                     foregroundColor: Colors.white,
                   ),
                   onPressed: () {
-                    // Solo si pasa las validaciones nativas, se ejecuta la acción.
+                    // Validación nativa de los campos antes de ejecutar la acción.
                     if (_formKey.currentState!.validate()) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(

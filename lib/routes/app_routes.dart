@@ -3,15 +3,12 @@ import 'package:flutter/material.dart';
 import '../screens/screens.dart';
 
 class AppRoutes {
-  static const String initialRoute = 'home';
+  static const String initialRoute = 'main';
 
-  // Mapa global de navegación.
-  // Toda pantalla nueva (Sobre Mí, Hobbies, Contacto) debe registrarse aquí.
   static Map<String, Widget Function(BuildContext)> routes = {
-    'home': (BuildContext context) => const HomeScreen(),
-    'hobbies': (BuildContext context) => const HobbiesScreen(),
-    'animated': (BuildContext context) => const AnimatedScreen(),
+    'main': (BuildContext context) => const MainNavigationScreen(),
     'about': (BuildContext context) => const AboutScreen(),
+    'hobbies': (BuildContext context) => const HobbiesScreen(),
     'contact': (BuildContext context) => const ContactScreen(),
   };
 }

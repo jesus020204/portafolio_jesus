@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
-// Importación del tema global para centralizar el diseño, siguiendo los principios de Clean Code.
-import '../themes/app_theme.dart';
-
-// Utilizamos StatelessWidget ya que la información del perfil es estática y no requiere redibujarse.
+// Pantalla de biografía que implementa widgets nativos y recursos estáticos locales
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
 
@@ -11,86 +8,47 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Sobre Mí')),
-      // Se prefiere ListView sobre Column para garantizar responsividad al manejar textos extensos y evitar desbordamientos.
-      body: ListView(
+      // SingleChildScrollView permite que el contenido sea desplazable si excede el tamaño de la pantalla
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
-        // Se encapsulan los widgets en const para optimizar la memoria, evitando reconstrucciones innecesarias del árbol.
-        children: const [
-          // CircleAvatar mantiene uniformidad. Usa el verde desde el AppTheme.
-          CircleAvatar(
-            maxRadius: 60,
-            backgroundColor: AppTheme.primaryGreen,
-            child: Icon(Icons.person, size: 60, color: Colors.white),
-          ),
-          SizedBox(height: 20),
-
-          Text(
-            'Jesús Ernández',
-            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: 5),
-          Text(
-            'Estudiante de Ing. en Sistemas - Unimar (7mo Trimestre)',
-            style: TextStyle(fontSize: 16, color: Colors.grey),
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: 30),
-
-          Text(
-            'Mi Historia',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 10),
-          Text(
-            'Nací en Valle de la Pascua (Guárico) y a los 2 años me mudé a la Isla de Margarita. En 2017, con 13 años, emigré a Argentina debido a la situación económica, donde culminé mis estudios secundarios. En 2024, motivado por el fuerte deseo de volver a mi país, decidí regresar por mi cuenta a Margarita para vivir con mis abuelos.',
-            style: TextStyle(fontSize: 16, height: 1.5),
-            textAlign: TextAlign.justify,
-          ),
-          SizedBox(height: 25),
-
-          Text(
-            'Academia y Pasiones',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 10),
-          Text(
-            'Aunque inicialmente consideré estudiar Economía o Medicina, me decanté por la Ingeniería en Sistemas. Dentro de este mundo, descubrí que mi mayor interés es el Análisis de Datos. Fuera de lo académico, aspiro a aprender oficios prácticos (carpintería, plomería, electricidad) y certificarme como personal trainer, combinando mi gusto por el gimnasio y el running.',
-            style: TextStyle(fontSize: 16, height: 1.5),
-            textAlign: TextAlign.justify,
-          ),
-          SizedBox(height: 30),
-
-          Text(
-            'Áreas de Interés',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 15),
-
-          // Se implementa Wrap en lugar de Row para que los Chips salten de línea automáticamente sin romper la pantalla.
-          Wrap(
-            spacing: 10,
-            runSpacing: 10,
-            children: [
-              Chip(
-                label: Text('Análisis de Datos'),
-                avatar: Icon(Icons.analytics, size: 18),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 20),
+            // Uso de CircleAvatar para el requerimiento académico de manejo de imágenes
+            const CircleAvatar(
+              radius: 80,
+              backgroundImage: AssetImage('assets/images/perfil.jpeg'),
+            ),
+            const SizedBox(height: 30),
+            const Text(
+              'Jesús Ernández', // Nombre implementado sin 'h' según los requerimientos
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Estudiante de Ingeniería en Sistemas',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.black54,
+                fontStyle: FontStyle.italic,
               ),
-              Chip(
-                label: Text('Flutter & Dart'),
-                avatar: Icon(Icons.phone_android, size: 18),
-              ),
-              Chip(
-                label: Text('Lógica de Sistemas'),
-                avatar: Icon(Icons.computer, size: 18),
-              ),
-              Chip(
-                label: Text('Fitness & Running'),
-                avatar: Icon(Icons.fitness_center, size: 18),
-              ),
-            ],
-          ),
-        ],
+            ),
+            const SizedBox(height: 30),
+            // Se divide la biografía en párrafos utilizando Text widgets independientes para mejor legibilidad
+            const Text(
+              'Nací el 2 de febrero de 2004 en Valle de la Pascua, estado Guárico, y a los 2 años me mudé a la Isla de Margarita. En 2017, a mis 13 años, emigré a Argentina debido a la situación económica de Venezuela, donde completé mis estudios secundarios. En 2024 tomé la decisión de regresar solo a mi país, dejando a mi familia en Argentina para vivir con mis abuelos en Margarita, motivado por el deseo de volver a mis raíces.',
+              textAlign: TextAlign.justify,
+              style: TextStyle(fontSize: 16, height: 1.5),
+            ),
+            const SizedBox(height: 15),
+            const Text(
+              'Actualmente curso el séptimo trimestre de Ingeniería en Sistemas en la Universidad de Margarita (UNIMAR). Aunque inicialmente consideré carreras como Economía o Medicina, encontré mi camino en la ingeniería. Además de la tecnología, tengo un gran interés personal en aprender oficios prácticos en el futuro, como carpintería, plomería y electricidad.',
+              textAlign: TextAlign.justify,
+              style: TextStyle(fontSize: 16, height: 1.5),
+            ),
+          ],
+        ),
       ),
     );
   }
