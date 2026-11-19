@@ -5,8 +5,6 @@ import 'about_screen.dart';
 import 'hobbies_screen.dart';
 import 'contact_screen.dart';
 
-/// Controlador principal de la interfaz con estado.
-/// Gestiona la navegación inferior y preserva el estado de las vistas secundarias.
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
 
@@ -15,10 +13,10 @@ class MainNavigationScreen extends StatefulWidget {
 }
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
-  /// Índice activo para el enrutamiento interno
+  // Variable para saber qué pestaña está seleccionada actualmente
   int _selectedIndex = 0;
 
-  /// Colección inmutable de las vistas disponibles en el IndexedStack
+  // Lista con las 3 pantallas a las que podemos navegar
   final List<Widget> _views = const [
     AboutScreen(),
     HobbiesScreen(),
@@ -28,6 +26,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // IndexedStack sirve para que las pantallas no se recarguen desde cero al cambiar de pestaña
       body: IndexedStack(index: _selectedIndex, children: _views),
       bottomNavigationBar: SafeArea(
         child: Padding(
@@ -50,7 +49,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             selectedIndex: _selectedIndex,
             onTabChange: (index) {
               setState(() {
-                _selectedIndex = index;
+                _selectedIndex = index; // Actualiza la pantalla al hacer clic
               });
             },
           ),

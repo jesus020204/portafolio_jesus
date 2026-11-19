@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// Pantalla de intereses implementada con listas dinámicas e imágenes locales.
 class HobbiesScreen extends StatelessWidget {
   const HobbiesScreen({super.key});
 
@@ -8,7 +7,6 @@ class HobbiesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Mis Hobbies')),
-      // Implementación de ListView para el manejo correcto del scroll en listas.
       body: ListView(
         padding: const EdgeInsets.all(15.0),
         children: const [
@@ -33,13 +31,12 @@ class HobbiesScreen extends StatelessWidget {
   }
 }
 
-// Extracción del widget de tarjeta para aplicar modularidad y evitar redundancia.
+// Widget reutilizable para no repetir el código de la tarjeta 3 veces
 class _HobbyCard extends StatelessWidget {
   final String title;
   final String description;
   final String imagePath;
 
-  // Uso estricto de constructores constantes para optimizar el rendimiento.
   const _HobbyCard({
     required this.title,
     required this.description,
@@ -56,19 +53,18 @@ class _HobbyCard extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // ClipRRect aplica recortes nativos para redondear las esquinas de la imagen.
+            // ClipRRect para redondear las esquinas de la imagen
             ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: Image.asset(
                 imagePath,
                 width: 80.0,
                 height: 80.0,
-                // BoxFit.cover asegura que la imagen respete las dimensiones sin distorsionarse.
                 fit: BoxFit.cover,
               ),
             ),
             const SizedBox(width: 15.0),
-            // Expanded delega el espacio restante al texto para prevenir desbordamientos (overflow).
+            // Expanded para que el texto ocupe el resto del espacio y no dé error de overflow
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

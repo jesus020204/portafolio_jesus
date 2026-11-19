@@ -1,17 +1,21 @@
-# portafolio_jesus
+# Portafolio Personal - Jesús Ernández
 
-A new Flutter project.
+Proyecto de portafolio personal desarrollado en Flutter para la materia de programación. La aplicación tiene una barra de navegación inferior y tres pantallas principales: sobre mí, hobbies y un formulario de contacto.
 
-## Getting Started
+## Estructura de carpetas
 
-This project is a starting point for a Flutter application.
+- `lib/screens/`: Pantallas de la aplicación (`about_screen.dart`, `hobbies_screen.dart`, `contact_screen.dart` y `main_navigation_screen.dart`).
+- `lib/themes/`: Colores y diseño general (`app_theme.dart`).
+- `lib/routes/`: Archivo de rutas (`app_routes.dart`).
+- `assets/images/`: Imágenes que se muestran en la app.
 
-A few resources to get you started if this is your first Flutter project:
+## Paquetes utilizados
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+- `google_nav_bar`: Para la barra de navegación de abajo.
+- `google_fonts`: Para el tipo de letra.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Cómo ejecutarlo
+
+1. Descargar los paquetes necesarios:
+   ```bash
+   flutter pub get
